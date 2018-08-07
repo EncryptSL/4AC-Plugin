@@ -1,0 +1,9 @@
+name: 4lphaAntiCheat
+main: net.alphaantileak.mcac.BukkitPlugin
+version: 1.0
+author: notaviable
+
+permissions:
+  mcac.user:
+    description: User uses 4lphaAntiCheat
+    default: false

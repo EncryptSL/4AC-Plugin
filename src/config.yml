@@ -1,0 +1,22 @@
+# Is this plugin running behind a Bungeecord server?
+bungeemode: false
+
+# Force players to use the client-side anti cheat
+force-mode:
+  enabled: false
+  kick-msg: You need to use 4lphaAntiCheat client-side anti cheat to join this server.
+
+# permissions to grant 4lpha anti cheat users
+permissions:
+- mcac.user
+
+# give users a tag in the tab-list
+tablist:
+  enabled: false
+  tag: '[4AC]'
+
+# chat notifications for the user
+chat-notifications:
+  enabled: false
+  not-using: 'You are not using 4lphaAntiCheat'
+  is-using: 'You are using 4lphaAntiCheat'

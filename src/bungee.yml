@@ -1,0 +1,4 @@
+name: 4lphaAntiCheat
+main: net.alphaantileak.mcac.BungeePlugin
+version: 1.0
+author: notaviable
