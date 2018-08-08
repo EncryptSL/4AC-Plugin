@@ -1,5 +1,7 @@
 package net.alphaantileak.mcac;
 
+import com.google.common.io.ByteArrayDataInput;
+import com.google.common.io.ByteStreams;
 import net.alphaantileak.mcac.listener.BukkitListner;
 import net.alphaantileak.mcac.server.AntiCheatServer;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -89,18 +91,22 @@ public class BukkitPlugin extends JavaPlugin implements PluginMessageListener {
             return;
         }
 
-        if (msg.length != 1) {
-            return;
+        ByteArrayDataInput in = ByteStreams.newDataInput(msg);
+        String subchannel = in.readUTF();
+        if (subchannel.equals(Constants.SUBCHANNEL)) {
+            boolean use = in.readBoolean();
+
+            if (use) {
+                setupUser(player);
+            } else if (forceAnticheat) {
+                onNonUserJoin(player);
+                player.kickPlayer(antiCheatKickMsg);
+            } else {
+                onNonUserJoin(player);
+            }
         }
 
-        if (msg[0] == 1) {
-            setupUser(player);
-        } else if (forceAnticheat) {
-            onNonUserJoin(player);
-            player.kickPlayer(antiCheatKickMsg);
-        } else {
-            onNonUserJoin(player);
-        }
+
     }
 
     public void setupUser(Player player) {

@@ -30,7 +30,7 @@ public class BungeePlugin extends Plugin {
             getLogger().log(Level.WARNING, "Couldn't load or save config", e);
         }
 
-        ProxyServer.getInstance().registerChannel(Constants.MESSAGE_CHANNEL);
+        //ProxyServer.getInstance().registerChannel(Constants.MESSAGE_CHANNEL);
         ProxyServer.getInstance().getPluginManager().registerListener(this, new BungeeListener(this));
 
         int bungeePort = -1;
@@ -75,6 +75,6 @@ public class BungeePlugin extends Plugin {
     public void onDisable() {
         if (server != null) server.stop();
 
-        ProxyServer.getInstance().unregisterChannel(Constants.MESSAGE_CHANNEL);
+        //ProxyServer.getInstance().unregisterChannel(Constants.MESSAGE_CHANNEL);
     }
 }

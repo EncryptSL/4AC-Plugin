@@ -1,11 +1,14 @@
 package net.alphaantileak.mcac.listener;
 
+import com.google.common.io.ByteArrayDataOutput;
+import com.google.common.io.ByteStreams;
 import net.alphaantileak.mcac.BungeePlugin;
 import net.alphaantileak.mcac.Constants;
 import net.alphaantileak.mcac.utils.PlayerUtils;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.event.PostLoginEvent;
 import net.md_5.bungee.api.event.PreLoginEvent;
+import net.md_5.bungee.api.event.ServerConnectedEvent;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
 
@@ -28,11 +31,14 @@ public class BungeeListener implements Listener {
     }
 
     @EventHandler
-    public void on(PostLoginEvent evt) {
+    public void on(ServerConnectedEvent evt) {
+        ByteArrayDataOutput out = ByteStreams.newDataOutput();
+        out.writeUTF(Constants.SUBCHANNEL);
         if (PlayerUtils.isMCACUser(evt.getPlayer().getAddress())) {
-            evt.getPlayer().sendData(Constants.MESSAGE_CHANNEL, new byte[] { 1 });
+            out.writeBoolean(true);
         } else {
-            evt.getPlayer().sendData(Constants.MESSAGE_CHANNEL, new byte[] { 0 });
+            out.writeBoolean(false);
         }
+        evt.getServer().sendData(Constants.MESSAGE_CHANNEL, out.toByteArray());
     }
 }
