@@ -8,10 +8,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-public class BukkitListner implements Listener {
+public class BukkitListener implements Listener {
     private final BukkitPlugin plugin;
 
-    public BukkitListner(BukkitPlugin plugin) {
+    public BukkitListener(BukkitPlugin plugin) {
         this.plugin = plugin;
     }
 

@@ -7,3 +7,12 @@ permissions:
   mcac.user:
     description: User uses 4lphaAntiCheat
     default: false
+  mcac.view:
+    desciption: Allows user to see who uses 4lphaAntiCheat
+    default: op
+
+commands:
+  mcac:
+    description: Master command for 4lphaAntiCheat
+    aliases: [4ac]
+    permission: mcac.view

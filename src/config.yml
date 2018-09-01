@@ -13,7 +13,14 @@ permissions:
 # give users a tag in the tab-list
 tablist:
   enabled: false
-  tag: '[4AC]'
+  prefix: '[4AC] '
+  suffix: ''
+
+# give users a nickname pre/suffix
+nickname:
+  enabled: false
+  prefix: '[4AC] '
+  suffix: ''
 
 # chat notifications for the user
 chat-notifications:
